@@ -4,7 +4,7 @@
 <div align="center" style="margin-top: 1em;">
   <a href="https://facebook-js-sdk.vercel.app" target="_blank">
     <picture>
-      <img alt="[ the bookface ]" src="https://i.ibb.co/jk6219sS/repo-logo.png" style="max-width: 80%;">
+      <img alt="[ the bookface ]" src="https://i.ibb.co/KpL7ftbn/Bookface-logo.png" style="max-width: 80%;">
     </picture>
   </a>
 </div>
