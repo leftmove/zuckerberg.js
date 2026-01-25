@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 
-import { use$ } from "@legendapp/state/react";
-import { preferences$, type PackageManager } from "state/preferences";
-
 import clsx from "clsx";
+
+import { use$ } from "@legendapp/state/react";
+
+import { preferences$, type PackageManager } from "state/preferences";
 
 // Base props shared across all variants
 interface BaseCommandLineProps {
@@ -148,18 +149,25 @@ function InstallCommandLine({
   const registry = use$(preferences$.registry);
 
   const getInstallCommand = (manager: PackageManager): string => {
-    const prefix = registry === "jsr" ? "jsr:" : "";
-    const fullPackage = `${prefix}${packageName}`;
+    const isJsr = registry === "jsr";
 
     switch (manager) {
       case "npm":
-        return `npm install ${fullPackage}`;
+        return isJsr
+          ? `npx jsr add ${packageName}`
+          : `npm install ${packageName}`;
       case "yarn":
-        return `yarn add ${fullPackage}`;
+        return isJsr
+          ? `yarn add jsr:${packageName}`
+          : `yarn add ${packageName}`;
       case "pnpm":
-        return `pnpm add ${fullPackage}`;
+        return isJsr ? `pnpm i jsr:${packageName}` : `pnpm add ${packageName}`;
       case "bun":
-        return `bun add ${fullPackage}`;
+        return isJsr ? `bunx jsr add ${packageName}` : `bun add ${packageName}`;
+      case "deno":
+        return isJsr
+          ? `deno add jsr:${packageName}`
+          : `deno add npm:${packageName}`;
       default:
         return "";
     }
@@ -176,7 +184,7 @@ function InstallCommandLine({
     >
       <div className="flex justify-between">
         <div className="flex ml-2 border-b border-gray-200 dark:border-gray-700">
-          {(["npm", "yarn", "pnpm", "bun"] as const).map((manager) => (
+          {(["npm", "yarn", "pnpm", "bun", "deno"] as const).map((manager) => (
             <button
               key={manager}
               className={clsx(
@@ -246,6 +254,8 @@ function ExecuteCommandLine({
         return `pnpm dlx ${packageName}`;
       case "bun":
         return `bunx ${packageName}`;
+      case "deno":
+        return `deno run -A npm:${packageName}`;
       default:
         return "";
     }
@@ -262,7 +272,7 @@ function ExecuteCommandLine({
     >
       <div className="flex">
         <div className="flex ml-2 border-b border-gray-200 dark:border-gray-700">
-          {(["npm", "yarn", "pnpm", "bun"] as const).map((manager) => (
+          {(["npm", "yarn", "pnpm", "bun", "deno"] as const).map((manager) => (
             <button
               key={manager}
               className={clsx(

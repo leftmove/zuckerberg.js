@@ -3,7 +3,7 @@ import { syncObservable } from "@legendapp/state/sync";
 import { ObservablePersistLocalStorage } from "@legendapp/state/persist-plugins/local-storage";
 
 export type Theme = "light" | "dark";
-export type PackageManager = "npm" | "yarn" | "pnpm" | "bun";
+export type PackageManager = "npm" | "yarn" | "pnpm" | "bun" | "deno";
 export type Registry = "npm" | "jsr";
 
 interface PreferencesState {
