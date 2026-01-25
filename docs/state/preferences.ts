@@ -14,7 +14,7 @@ interface PreferencesState {
 
 export const preferences$ = observable<PreferencesState>({
   packageManager: "npm",
-  registry: "npm",
+  registry: "jsr",
   theme: "light",
 });
 
