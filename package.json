@@ -1,10 +1,6 @@
 {
-  "name": "@anonyo/facebook.js",
+  "name": "bookface",
   "version": "1.1.5",
-  "author": {
-    "name": "Anonyo Noor",
-    "url": "https://anonyonoor.com"
-  },
   "devDependencies": {
     "@modelcontextprotocol/inspector": "^0.12.0",
     "@types/bun": "latest",
@@ -12,6 +8,8 @@
     "@types/express": "^5.0.1",
     "@types/mocha": "^10.0.7",
     "@types/node": "^22.15.19",
+    "@types/react": "^18.3.1",
+    "@types/react-reconciler": "^0.28.8",
     "@types/tmp": "^0.2.6",
     "axios": "^1.7.3",
     "chai": "^5.2.0",
@@ -22,6 +20,7 @@
     "standard-version": "^9.5.0",
     "ts-node": "^10.9.2",
     "tsx": "^4.16.2",
+    "typedoc": "^0.28.17",
     "typescript": "^5.5.4"
   },
   "peerDependencies": {
@@ -33,7 +32,9 @@
     "check:all": "mocha test/**/*.ts",
     "check:client": "mocha test/client/**/*.ts",
     "facebook": "tsx src/cli/index.ts",
-    "build": "rm -rf dist && node esbuild.config.mjs",
+    "docs": "typedoc --options docs/typedoc.config.js",
+    "clean": "rm -rf dist",
+    "build": "bun run clean && node esbuild.config.mjs && bun run docs",
     "prepublishOnly": "npm run build",
     "prepare": "husky"
   },
@@ -57,15 +58,12 @@
     "open": "^10.1.0",
     "ora": "^8.0.1",
     "portfinder": "^1.0.37",
+    "react": "^18.3.1",
+    "react-reconciler": "^0.29.2",
+    "scheduler": "^0.23.2",
     "tmp": "^0.2.3"
   },
   "files": [
     "dist"
-  ],
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  ]
 }

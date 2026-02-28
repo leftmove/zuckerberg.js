@@ -5,7 +5,7 @@ import { FACEBOOK_URL } from "../api";
 
 import type { Profile } from "../api";
 import type { ImageUpload, Media } from "./upload";
-import type { CommentRegular, CommentMedia } from "./comments";
+import type { Comment, CommentRegular, CommentMedia } from "./comments";
 
 type id = string;
 export interface CreatedPost {

@@ -59,7 +59,7 @@ To do anything else with Bookface, or for a more thorough understanding of the s
 
 [![JSR](https://jsr.io/badges/@bookface/ts)](https://jsr.io/@bookface/ts)
 
-![NPM Version](https://img.shields.io/npm/v/:@anonyo/bookface)
+![NPM Version](https://img.shields.io/npm/v/bookface-ts)
 
 ```sh
 bunx jsr add @bookface/ts # Bun
@@ -75,7 +75,7 @@ yarn add jsr:@bookface/ts # Yarn 4.8 or older
 yarn dlx jsr add @bookface/ts # Yarn
 ```
 
-If you want to install from npm, rather than using jsr, you can use the `@anonyo/bookface` package instead. It should be noted though that this package is not as well maintained as the jsr package.
+If you want to install from npm, rather than using jsr, you can use the `bookface-ts` package instead. It should be noted though that this package is not as well maintained as the jsr package.
 
 Once you've installed, you'll likely want to login. You can do this with following command. Replace `npx` with your preferred package manager's package runner (i.e. bunx, dlx).
 

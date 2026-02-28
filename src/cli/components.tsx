@@ -418,7 +418,7 @@ export const CredentialsDisplay = ({
   scope: any;
 }) => {
   // Helper function to format credential objects for display
-  const formatObject = (obj: any, indent = 0): JSX.Element[] => {
+  const formatObject = (obj: any, indent = 0): React.JSX.Element[] => {
     if (!obj) return [<Text key="null">null</Text>];
 
     return Object.entries(obj).map(([key, value], index) => {
